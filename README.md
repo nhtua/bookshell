@@ -3,7 +3,7 @@
 My notebook for Kubernetes common commands set.
 
 ## Structure
-I put all same-purposed `.sh` files into a directory. Usually, I name the script by its behavior and its order to execute. 
+I put all same-purposed `.sh` files into a directory. Usually, a script are named by its behavior and its order to execute. 
 
 For example:
 
