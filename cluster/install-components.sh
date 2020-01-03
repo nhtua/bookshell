@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e  # halt if any error occurs
 
-K8S_VERSION="1.16.4-00"
+K8S_VERSION="1.16.4-00" # K8s is changed regularly. I just want to keep this script stable with v1.16
 
 echo "--> STEP 01. check requirements"
 sudo swapoff -a
@@ -56,4 +56,4 @@ deb https://apt.kubernetes.io/ kubernetes-xenial main
 EOF
 sudo apt-get update
 sudo apt-get install -y kubeadm=$K8S_VERSION kubelet=$K8S_VERSION kubectl=$K8S_VERSION
-sudo apt-mark hold kubeadm kubelet kubectl  # K8s is changed regularly every version. I just want to keep this script stable with v1.17
+sudo apt-mark hold kubeadm kubelet kubectl  # Choose to stop upgrading
