@@ -8,6 +8,8 @@
 ########################################################################################
 set -e  # stop immediately if any error happens
 
+#TODO Make [pod network CIDR, K8s version, docker version, etc.] configurable
+
 SCRIPT_HOME=$(cd `dirname $BASH_SOURCE` && pwd)
 POD_IP_RANGE="192.168.0.0/16"  # This IP Range is the default value of Calico
 
