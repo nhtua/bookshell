@@ -39,5 +39,5 @@ kubectl apply -f https://docs.projectcalico.org/v3.11/manifests/calico.yaml
 kubectl get pods --all-namespaces
 echo ;echo "--> Use information bellow to add new nodes"
 echo "- MASTER NODE IP: $MASTER_NODE_IP"
-echo "- Run command bellow after run '01.add-worker-node.sh' worker node"
+echo "- Run command bellow after run '01.add-worker-node.sh' on worker node"
 sudo kubeadm token create --print-join-command
