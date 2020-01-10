@@ -1,6 +1,6 @@
 # Kube-shell
 
-My notebook for Kubernetes common commands set.
+My notebook for Kubernetes common commands set. You can use these scripts as the learning instructions step-by-step or automating scripts to do some specific purposes.
 
 ## Structure
 I put all same-purposed `.sh` files into a directory. Usually, a script are named by its behavior and its order to execute. 
@@ -13,7 +13,7 @@ For example:
         ├── 01.add-worker-node.sh
         └── install-components.sh
 
-To build up a K8s cluster, you should run `00.install-master-node.sh` first, then execute `01.add-worker-node.sh` respectively.
+To build up a K8s cluster automatically, you should run `00.install-master-node.sh` first, then execute `01.add-worker-node.sh` respectively.
 
 ## Improvement
 
