@@ -18,7 +18,8 @@ if [[ -z $USR ]]; then
 fi
 
 # generate SSH key pairs
-ssh-keygen -q -N '' -m PEM -t rsa -f "~/.ssh/id_rsa_$USR" <<< y
+# REF. https://stackoverflow.com/a/43235320/1235074
+ssh-keygen -q -N '' -m PEM -t rsa -f "$HOME/.ssh/id_rsa_$USR" <<< ""$'\n'"y" 2>&1 >/dev/null
 
 # create new user
 useradd -m -d /home/$USR -s /bin/bash $USR
