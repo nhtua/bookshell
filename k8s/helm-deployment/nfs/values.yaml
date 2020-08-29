@@ -1,0 +1,37 @@
+## NOTE:
+## This config file overrides the default values of bitnami/wordpress chart.
+## Many parts were cut off to keep the file shorter.
+## Check all available configurations here https://github.com/helm/charts/blob/master/stable/nfs-server-provisioner/values.yaml
+
+
+replicaCount: 1
+
+## Persistent Volume for NFS server
+persistence:
+  enabled: true
+  storageClass: "standard"
+  accessMode: ReadWriteOnce
+  size: 30Gi
+
+## For creating the StorageClass automatically:
+storageClass:
+  create: true
+  defaultClass: false
+  name: nfs
+  allowVolumeExpansion: true
+  parameters: {}
+  mountOptions:
+    - vers=3
+  reclaimPolicy: Delete
+
+## For RBAC support:
+rbac:
+  create: false
+
+resources:
+  limits:
+    cpu: 200m
+    memory: 256Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi

@@ -1,0 +1,106 @@
+## NOTE:
+## This config file overrides the default values of bitnami/wordpress chart.
+## Many parts were cut off to keep the file shorter.
+## Check all available configurations here https://github.com/bitnami/charts/blob/master/bitnami/mariadb/values.yaml
+
+
+## Init containers parameters:
+## volumePermissions: Change the owner and group of the persistent volume mountpoint to runAsUser:fsGroup values from the securityContext section.
+##
+volumePermissions:
+  enabled: true
+
+service:
+  type: ClusterIP
+  port: 3306
+
+## Pods Service Account
+## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/
+serviceAccount:
+  create: false
+
+
+## Role Based Access
+## Ref: https://kubernetes.io/docs/admin/authorization/rbac/
+##
+rbac:
+  create: false
+
+## Pod Security Context
+## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+## You may want to change from 1001 to 0 for root user
+securityContext:
+  enabled: true
+  fsGroup: 1001
+  runAsUser: 1001
+
+
+## MariaDB admin credentials
+##
+rootUser:
+  password: ""
+  ## Option to force users to specify a password. That is required for 'helm upgrade' to work properly.
+  ## If it is not force, a random password will be generated.
+  ##
+  forcePassword: false
+
+
+## Custom user/db credentials
+##
+db:
+  user: "kysuphanmem"
+  password: "kspm123456"
+  name: kysuphanmem
+  ## Option to force users to specify a password. That is required for 'helm upgrade' to work properly.
+  ## If it is not force, a random password will be generated.
+  ##
+  forcePassword: true
+
+
+## Replication configuration
+##
+replication:
+  enabled: true
+  user: replicator
+  password: ""
+  ## Option to force users to specify a password. That is required for 'helm upgrade' to work properly.
+  ## If it is not force, a random password will be generated.
+  ##
+  forcePassword: false
+
+master:
+  ## Enable persistence using Persistent Volume Claims
+  ## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
+  ##
+  persistence:
+    enabled: true
+    mountPath: /bitnami/mariadb
+    storageClass: "standard"
+    accessModes:
+      - ReadWriteOnce
+    size: 8Gi
+
+  livenessProbe:
+    enabled: false
+
+  readinessProbe:
+    enabled: false
+
+
+slave:
+  replicas: 2
+  persistence:
+    enabled: true
+    storageClass: "standard"
+    annotations:
+    accessModes:
+      - ReadWriteOnce
+    size: 8Gi
+
+  livenessProbe:
+    enabled: false
+  readinessProbe:
+    enabled: false
+
+metrics:
+  enabled: false
