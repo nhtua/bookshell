@@ -1,6 +1,6 @@
-# Kube-shell
+# bookshell
 
-My notebook for Kubernetes common commands set. You can use these scripts as the learning instructions step-by-step or automating scripts to do some specific purposes.
+My notebook for common shell commands. You can use these scripts as the learning instructions step-by-step or automating scripts to do some specific purposes.
 
 ## Structure
 I put all same-purposed `.sh` files into a directory. Usually, a script are named by its behavior and its order to execute. 
