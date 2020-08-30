@@ -1,4 +1,10 @@
-  #!/usr/bin/env bash
+#!/usr/bin/env bash
+
+# Setup Aliases
+alias k='kubectl'
+alias ns='kubectl config set-context --current --namespace'
+alias kurrent='kubectl config view --minify -o "jsonpath={..namespace}" | xargs -I %s echo "Current Namespace: %s"'
+alias nodetop='k get nodes | grep Ready | cut -d" " -f1 | xargs kubectl describe node | grep -E "Name: |cpu |memory "'  
 
 # Setup vim
 curl -Lo ~/.vimrc https://gist.github.com/simonista/8703722/raw/d08f2b4dc10452b97d3ca15386e9eed457a53c61/.vimrc
