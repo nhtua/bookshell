@@ -27,9 +27,6 @@ sudo apt-get install -y bash-completion
 source <(kubectl completion bash)
 echo "source <(kubectl completion bash)" >> ~/.bashrc
 
-MASTER_NODE_IP=$(ip addr show | grep -E "inet.*ens4" | xargs | cut -d" " -f2 | cut -d\/ -f1)
-echo "$MASTER_NODE_IP k8smaster" | sudo tee -a /etc/hosts
-
 
 # Install Calico network. Ref. https://docs.projectcalico.org/v3.11/getting-started/kubernetes/installation/calico
 kubectl apply -f https://docs.projectcalico.org/v3.11/manifests/rbac/rbac-kdd-calico.yaml
@@ -37,7 +34,6 @@ kubectl apply -f https://docs.projectcalico.org/v3.11/manifests/calico.yaml
 
 # Verify installation
 kubectl get pods --all-namespaces
-echo ;echo "--> Use information bellow to add new nodes"
-echo "- MASTER NODE IP: $MASTER_NODE_IP"
-echo "- Run command bellow after run '01.add-worker-node.sh' on worker node"
+echo ;echo "--> Complete installation of master node"
+echo "--> Run command bellow after run '01.add-worker-node.sh' on worker node"
 sudo kubeadm token create --print-join-command
